@@ -6,5 +6,17 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer \
     && php -r "unlink('composer-setup.php');"
 
-RUN apt-get update \
+RUN apt-get -y update \
     && apt-get install -y mysql-client
+
+RUN apt-get -y update \
+    && apt-get install -y libicu-dev\
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl \
+    && docker-php-ext-install pdo_mysql
+
+RUN apt-get -y update \
+    && apt-get install -y zip \
+    && apt-get install -y unzip
+
+RUN a2enmod rewrite
