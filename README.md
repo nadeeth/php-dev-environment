@@ -1,5 +1,8 @@
-# php-dev-environment
+# Development Environment for PHP applications with Docker
 
-UP : docker-compose up -d
-BASH : docker exec -it php_web bash
-REBUILD : docker-compose up -d --force-recreate --build
+Action | Command 
+--- | --- 
+Up | docker-compose up -d
+Down | docker-compose down 
+Bash | docker exec -it php_web bash
+Rebuild | docker-compose up -d --force-recreate --build
