@@ -5,3 +5,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && mv composer.phar /usr/local/bin/composer \
     && php -r "unlink('composer-setup.php');"
+
+RUN apt-get update \
+    && apt-get install -y mysql-client
