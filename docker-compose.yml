@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: feastcloud
+    ports:
+      - "9906:3306"
+    volumes:
+      - my-datavolume:/var/lib/mysql
+  web:
+    image: php:7.2.2-apache
+    build: ./.build
+    container_name: php_web
+    depends_on:
+      - db
+    volumes:
+      - ./php/:/var/www/html/
+    ports:
+      - "8100:80"
+    stdin_open: true
+    tty: true
+    links:
+      - db
+  composer:
+    restart: 'no'
+    image: composer
+    command: install
+    volumes:
+        - .:/app
+volumes:
+  my-datavolume:
