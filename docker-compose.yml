@@ -24,11 +24,5 @@ services:
     tty: true
     links:
       - db
-  composer:
-    restart: 'no'
-    image: composer
-    command: install
-    volumes:
-        - .:/app
 volumes:
   my-datavolume:
