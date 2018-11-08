@@ -20,4 +20,7 @@ RUN apt-get -y update \
     && apt-get install -y zip \
     && apt-get install -y unzip
 
+RUN apt-get -y update \
+    && apt-get -y install git-core
+
 RUN a2enmod rewrite
