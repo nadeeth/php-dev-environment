@@ -11,10 +11,12 @@ RUN apt-get -y update \
     && apt-get install -y mysql-client
 
 RUN apt-get -y update \
-    && apt-get install -y libicu-dev\
+    && apt-get install -y libicu-dev sendmail libpng-dev zlib1g-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
-    && docker-php-ext-install pdo_mysql
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-install gd
 
 RUN apt-get -y update \
     && apt-get install -y zip \
